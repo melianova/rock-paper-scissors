@@ -12,12 +12,11 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-    const choice = prompt('Type 0 for rock, 1 for paper or 2 for scissors. Default: rock.');
     const choices = ['rock', 'paper', 'scissors'];
+    const choiceString = prompt('Type rock, paper or scissors.');
+    const choice = choices.indexOf(choiceString?.toLowerCase());
     return choices[choice];
 }
-
-
 
 function playGame() {
     function playRound(humanChoice, computerChoice) {
@@ -26,7 +25,7 @@ function playGame() {
         if (humanChoice === computerChoice) {
             return "It's a draw!";
         }
-        if (humanChoice === 'rock')
+        if (humanChoice === 'rock') {
             if (computerChoice === 'paper') {
                 ++computerScore;
                 return 'You loose! Paper beats rock!';
@@ -35,7 +34,8 @@ function playGame() {
                 ++humanScore;
                 return 'You win! Rock beats scissors!';
             }
-        if (humanChoice === 'paper')
+        }
+        if (humanChoice === 'paper') {
             if (computerChoice === 'scissors') {
                 ++computerScore;
                 return 'You loose! Scissors beat paper!';
@@ -43,8 +43,9 @@ function playGame() {
             if (computerChoice === 'rock') {
                 ++humanScore;
                 return 'You win! Paper beats rock!';
-            }
-        if (humanChoice === 'scissors')
+            } 
+        }
+        if (humanChoice === 'scissors') {
             if (computerChoice === 'rock') {
                 ++computerScore;
                 return 'You loose! Rock beats scissors!';
@@ -53,10 +54,17 @@ function playGame() {
                 ++humanScore;
                 return 'You win! Scissors beat paper!';
             }
+        }
     }
 
     for (let i = 0; i < 5; ++i) {
-        const result = playRound(getHumanChoice(), getComputerChoice());
+        const humanChoice = getHumanChoice();
+        if (humanChoice == undefined) {
+            console.log('Game stopped!');
+            break;
+        }
+        const result = playRound(humanChoice, getComputerChoice());
         console.log(result);
+        console.log(`Human: ${humanScore}, Computer: ${computerScore}`);
     }
 }
