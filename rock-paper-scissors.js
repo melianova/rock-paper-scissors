@@ -5,6 +5,16 @@ console.log('Hello');
 let humanScore = 0;
 let computerScore = 0;
 
+const buttons = document.querySelectorAll('.button');
+buttons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+        const humanChoice = e.target.innerText;
+        const result = playRound(humanChoice, getComputerChoice());
+        console.log(result);
+        console.log(`Human: ${humanScore}, Computer: ${computerScore}`);
+    });
+});
+
 function getComputerChoice() {
     const choices = ['rock', 'paper', 'scissors'];
     const random = Math.floor(Math.random() * choices.length);
@@ -55,7 +65,3 @@ function playRound(humanChoice, computerChoice) {
         }
     }
 }
-
-const result = playRound(humanChoice, getComputerChoice());
-console.log(result);
-console.log(`Human: ${humanScore}, Computer: ${computerScore}`);
