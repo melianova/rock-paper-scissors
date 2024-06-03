@@ -6,12 +6,14 @@ let humanScore = 0;
 let computerScore = 0;
 
 const buttons = document.querySelectorAll('.button');
+const resultsDisplay = document.querySelector('.results.display');
 buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
         const humanChoice = e.target.innerText;
         const result = playRound(humanChoice, getComputerChoice());
-        console.log(result);
-        console.log(`Human: ${humanScore}, Computer: ${computerScore}`);
+        console.log(resultsDisplay);
+        resultsDisplay.innerText = `${result}\n`;
+        resultsDisplay.innerText += `Human: ${humanScore}, Computer: ${computerScore}`;
     });
 });
 
