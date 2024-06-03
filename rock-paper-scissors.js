@@ -56,15 +56,12 @@ function playGame() {
             }
         }
     }
-
-    for (let i = 0; i < 5; ++i) {
-        const humanChoice = getHumanChoice();
-        if (humanChoice == undefined) {
-            console.log('Game stopped!');
-            break;
-        }
-        const result = playRound(humanChoice, getComputerChoice());
-        console.log(result);
-        console.log(`Human: ${humanScore}, Computer: ${computerScore}`);
+    const humanChoice = getHumanChoice();
+    if (humanChoice == undefined) {
+        console.log('Game stopped!');
+        break;
     }
+    const result = playRound(humanChoice, getComputerChoice());
+    console.log(result);
+    console.log(`Human: ${humanScore}, Computer: ${computerScore}`);
 }
