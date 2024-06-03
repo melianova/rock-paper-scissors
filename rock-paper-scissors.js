@@ -21,13 +21,6 @@ function getComputerChoice() {
     return choices[random];
 }
 
-function getHumanChoice() {
-    const choices = ['rock', 'paper', 'scissors'];
-    const choiceString = prompt('Type rock, paper or scissors.');
-    const choice = choices.indexOf(choiceString?.toLowerCase());
-    return choices[choice];
-}
-
 function playRound(humanChoice, computerChoice) {
     humanChoice = humanChoice.toLowerCase();
     
